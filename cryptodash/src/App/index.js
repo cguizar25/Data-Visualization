@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import WelcomeMessage from './WelcomeMessage';
+import styled from 'styled-components';
+
+const MyButton = styled.div`
+  color: green;
+  ${props => props.primary && css`
+    color: palevioletred;
+    `}
+`
+const TomatoButton = styled(MyButton)`
+  color: tomato;
+  border-color: tomato;
+`
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <WelcomeMessage/>
+      <MyButton primary> Check </MyButton>
+      <TomatoButton>Check check</TomatoButton>
     </div>
   );
 }
