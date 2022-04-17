@@ -1,16 +1,40 @@
 import styled from 'styled-components';
 
+const Logo = styled.div`
+  font-size: 1.5em;
+`
+
 const Bar = styled.div`
   display: grid;
+  margin-bottom: 40px;
   grid-template-column: 180px auto 100px 100px;
 `
 
+const ControlButtonElem = styled.div`
+  cursor: pointer;
+  ${props => props.active && css`
+    text-shadow: 0px 0px 60px #03ff03
+  `}
+`
+
+const toPowerCase = (lower) => {
+  return lower.charAt(0).toUpperCase() + lower.substr(1);
+}
+
+function ControlButton({name, active}){
+  return (
+    <ControlButtonElem active={active}>
+      {toPowerCase(name)}
+    </ControlButtonElem>
+  )
+}
+
 const AppBar = () => {
   return <Bar>
-      <div>CryptoDash</div>
+      <Logo>CryptoDash</Logo>
       <div/>
-      <div>Dashboard</div>
-      <div>Settings</div>
+      <ControlButton name='Dashboard'/>
+      <ControlButton name='Settings'/>
     </Bar>
 }
 
