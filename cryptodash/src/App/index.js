@@ -4,6 +4,7 @@ import WelcomeMessage from './WelcomeMessage';
 import styled from 'styled-components';
 import AppLayout from './AppLayout'
 import AppBar from './AppBar';
+import {AppProvider} from './AppProvider'
 
 const MyButton = styled.div`
   color: green;
@@ -19,12 +20,14 @@ const TomatoButton = styled(MyButton)`
 function App() {
   return (
     <AppLayout>
-      <AppBar />
-      <div className="App">
-        <WelcomeMessage/>
-        <MyButton primary> Check </MyButton>
-        <TomatoButton>Check check</TomatoButton>
-      </div>
+      <AppProvider>
+        <AppBar />
+        <div className="App">
+          <WelcomeMessage/>
+          <MyButton primary> Check </MyButton>
+          <TomatoButton>Check check</TomatoButton>
+        </div>
+      </AppProvider>
     </AppLayout>2
   );
 }
