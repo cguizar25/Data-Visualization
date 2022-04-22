@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {AppContext} from './AppProvider'
 
 const Logo = styled.div`
   font-size: 1.5em;
@@ -23,9 +24,13 @@ const toPowerCase = (lower) => {
 
 function ControlButton({name, active}){
   return (
-    <ControlButtonElem active={active}>
-      {toPowerCase(name)}
-    </ControlButtonElem>
+    <AppContext.Consumer>
+      {({page, setPage}) => (
+        <ControlButtonElem active={page === name} onClick={() => setPage(name)}>
+          {toPowerCase(name)}
+        </ControlButtonElem>
+      )}
+    </AppContext.Consumer>
   )
 }
 
