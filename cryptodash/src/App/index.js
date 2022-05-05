@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import AppLayout from './AppLayout'
 import AppBar from './AppBar';
 import {AppProvider} from './AppProvider'
+import Settings from '../Settings';
 
 
 function App() {
@@ -12,8 +13,7 @@ function App() {
     <AppLayout>
       <AppProvider>
         <AppBar />
-        <div className="App">
-        </div>
+        <Settings />
       </AppProvider>
     </AppLayout>2
   );
