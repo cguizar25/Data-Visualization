@@ -1,5 +1,5 @@
 import WelcomeMessage from './WelcomeMessage';
-import ConfineButton from './ConfineButton';
+import ConfirmButton from './ConfirmButton';
 import Page from '../Shared/Page';
 import CoinGrid from './CoinGrid';
 
