@@ -1,14 +1,18 @@
 import { AppContext } from '../App/AppProvider';
-import {SelectableTile} from '../Shared/Tile';
+import {SelectableTile, DisabledTile, DeletableTile} from '../Shared/Tile';
 import CoinHeaderGrid from './CoinHeaderGrid';
 import CoinImage from '../Shared/CoinImage';
 
-const CoinKey = ({coinKey}) => {
+const CoinKey = ({coinKey, topSection}) => {
   return <AppContext.Consumer>
     {({coinList}) => {
       let coin = coinList[coinKey];
 
-      const TileClass = SelectableTile;
+      let TileClass = SelectableTile;
+      if(topSection){
+        TileClass = DeletableTile;
+      }
+
       return <TileClass>
         <CoinHeaderGrid name={coin.CoinName} symbol={coin.Symbol} />
         <CoinImage coin={coin}/>
