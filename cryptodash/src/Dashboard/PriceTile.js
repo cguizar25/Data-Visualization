@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { SelectableTile } from '../Shared/Tile';
 import { fontSize3, fontSizeBig } from '../Shared/Styles';
 import { CoinHeaderGridStyled } from '../Settings/CoinHeaderGridStyled';
+import { AppContext } from "../App/AppProvider"
 
 const JustifyRight = styled.div`
   justify-self: right;
@@ -35,6 +36,11 @@ const PriceTileStyled = syled(SelectableTile)`
     grid-template-columns: repeat(3, 1fr);
     justify-items: right;
   `}
+
+  ${props => props.currentFavorites && css`
+    ${greenBoxShadow}
+    pointer-events: none;
+  `}
 `_
 
 function ChangePercent({data}){
@@ -47,9 +53,9 @@ function ChangePercent({data}){
   )
 }
 
-function PriceTile({sym, data}) {
+function PriceTile({sym, data, currentFavorites, setCurrentFavorite}) {
   return (
-    <PriceTileStyled>
+    <PriceTileStyled onClick={setCurrentFavorite} currentFavorites={currentFavorites}>
       <CoinHeaderGridStyled>
         <div> {sym} </div>
         <ChangePercent data={data} />
@@ -61,8 +67,8 @@ function PriceTile({sym, data}) {
   );
 }
 
-function PriceTileCompact({sym, data}) {
-  <PriceTileStyled compact>
+function PriceTileCompact({sym, data, currentFavoritesm setCurrentFavorite}) {
+  <PriceTileStyled onClick={setCurrentFavorite} compact currentFavorites={currentFavorites}>
     <JustifyLeft>
       {sym}
     </JustifyLeft>
@@ -77,5 +83,19 @@ export default function({price, index}){
   let sym = Object.keys(price)[0];
   let data = price[sym]['USD'];
   let TileClass = index < 5 ? PriceTile: PriceTileCompact;
-  return <TileClass sym={sym} data={data.PRICE}> {sym} {data.PRICE} </TileClass>
+  return (
+    <AppContext.Provider>
+      {({currentFavorites, setCurrentFavorite}) =>
+        <TileClass
+          sym={sym}
+          data={data}
+          sym={sym}
+          currentFavorites={currentFavorites === sym}
+          setCurrentFavorite={() => setCurrentFavorite(sym)}
+        >
+         </TileClass>
+
+    }
+    </AppContext.Provider>
+  )
 }
