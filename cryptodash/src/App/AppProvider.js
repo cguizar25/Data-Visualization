@@ -24,7 +24,7 @@ export class AppProvider extends React.Component {
   }
 
   addCoin = key => {
-    let favorites = [..this.state.favorites];
+    let favorites = [...this.state.favorites];
     if (favorites.length < MAX_FAVORITES) {
       favorites.push(key);
       this.setState({favorites});
@@ -32,7 +32,7 @@ export class AppProvider extends React.Component {
   }
 
   removeCoin = key => {
-    let favorites = [..this.state,favorites];
+    let favorites = [...this.state,favorites];
     this.setState({favorites: _.pull(favorites, key)})
   }
 
@@ -85,8 +85,8 @@ export class AppProvider extends React.Component {
   }
 
   setCurrentFavorite = (sym) => {
-    this,setState({
-      currentFavorites = sym
+    this.setState({
+      currentFavorites: sym
     });
     localStorage.setItem('cryptoDash', JSON.stringify({
       ...JSON.parse(localStorage.getItem('cryptoDash')),
