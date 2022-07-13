@@ -5,6 +5,7 @@ const cc = require('cryptocompare');
 export const AppContext = React.createContext();
 
 const MAX_FAVORITES = 10;
+const TIME_UNITS = 10;
 
 export class AppProvider extends React.Component {
   constructor(props){
@@ -41,6 +42,7 @@ export class AppProvider extends React.Component {
   componentDidMount = () => {
     this.fetchCoins();
     this.fetchPrices();
+    this.fetchHistorical();
   }
 
   fetchCoins = async () => {
@@ -51,9 +53,13 @@ export class AppProvider extends React.Component {
   fetchPrices = async () => {
   if(this.state.firstVisit) return;
   let prices = await this.prices();
-  // We must filter the empty price objects (not in the lecture)
-  prices = prices.filter(price => Object.keys(price).length);
   this.setState({prices});
+  }
+
+  fetchHistorical = async () => {
+    if(this.state.firstVisit) return;
+    let prices = await this.prices();
+    this.setState({prices});
   }
 
   prices = async () => {
@@ -66,6 +72,22 @@ export class AppProvider extends React.Component {
         console.warn('Fetch price error:', e)
       }
     }
+  }
+
+  historical = () => {
+    let promises = [];
+    for (let units = TIME_UNITS; units > 0; units--){
+      promises.push(
+        cc.priceHistorical(
+          this.state.currentFavorite,
+          ['USD'],
+          moment()
+          .subtract({months: units})
+          .toDate()
+        )
+      )
+    }
+    return Promise.all(promises)
   }
 
   confirmFavorites = () => {
