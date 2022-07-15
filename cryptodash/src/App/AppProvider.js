@@ -58,8 +58,17 @@ export class AppProvider extends React.Component {
 
   fetchHistorical = async () => {
     if(this.state.firstVisit) return;
-    let prices = await this.prices();
-    this.setState({prices});
+    let results = await this.historical();
+    let historical = [
+      {
+        name: this.state.currentFavorite,
+        data: results.map((ticker, index) => [
+          moment().subtract({months: TIME_UNITS - index}).valueOf(),
+          ticker.USD
+        ])
+      }
+    ]
+    this.setSttate({historical});
   }
 
   prices = async () => {
@@ -95,9 +104,12 @@ export class AppProvider extends React.Component {
     this.setState({
       firstVisit:false,
       page: 'dashboard',
-      currentFavorites
+      currentFavorites,
+      prices: null,
+      historical: null
     }, () => {
       this.fetchPrices();
+      this.fetchHistorical();
     }
   );
     localStorage.setItem('cryptoDash', JSON.stringify({
@@ -108,8 +120,10 @@ export class AppProvider extends React.Component {
 
   setCurrentFavorite = (sym) => {
     this.setState({
-      currentFavorites: sym
-    });
+      currentFavorites: sym,
+      historical: null
+    }, this.fetchHistorical);
+
     localStorage.setItem('cryptoDash', JSON.stringify({
       ...JSON.parse(localStorage.getItem('cryptoDash')),
       currentFavorites: sym
