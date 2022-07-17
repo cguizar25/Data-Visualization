@@ -1,6 +1,6 @@
 import { AppContext } from '../App/AppProvider';
 
-export default function ({name, children}) {
+const Page = ({name, children}) => {
   return <AppContext.Consumer>
     {({page}) => {
       if (page !== name) {
@@ -10,3 +10,5 @@ export default function ({name, children}) {
     }}
   </AppContext.Consumer>
 }
+
+export default Page;

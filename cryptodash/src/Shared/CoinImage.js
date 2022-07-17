@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const CoinImage = styled.img`
+export const CoinImage = styled.img`
   height: 50px;
   ${props => props.spotlight && css`
     margin: auto;
@@ -9,7 +9,7 @@ const CoinImage = styled.img`
   `}
 `_
 
-export default function ({coin, style}) {
+const image = ({coin, style}) => {
   return <img
     spotlight={spotlight}
     alt={coin.CoinSymbol}
@@ -18,3 +18,5 @@ export default function ({coin, style}) {
     }`}
   />;
 }
+
+export default image;

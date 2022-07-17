@@ -1,6 +1,7 @@
 import { AppContext } from '../App/AppProvider';
 
-export default function (props) {
+
+const Content = (props) => {
   return <AppContext.Consumer>
     {({coinList}) => {
       if(!coinList){
@@ -10,3 +11,4 @@ export default function (props) {
     }}
   </AppContext.Consumer>
 }
+export default Content;
