@@ -18,7 +18,7 @@ export const CenterDiv = styled.div`
   justify-content: center;
 `;
 
-export default function (){
+const ConfirmButton = () => {
   return <AppContext.Consumer>
       {({confirmFavorites}) =>
       <CenterDiv>
@@ -29,3 +29,5 @@ export default function (){
     }
   </AppContext.Consumer>
 }
+
+export default ConfirmButton;

@@ -42,7 +42,7 @@ function filterCoins(e, setFilteredCoins, coinList){
   handleFilter(inputValue, coinList, setFilteredCoins)
 }
 
-export default function(){
+const Search = () => {
   return (
     <AppContext.Consumer>
       {({setFilteredCoins, coinList}) =>
@@ -54,3 +54,4 @@ export default function(){
     </AppContext.Consumer>
   )
 }
+export default Search;
