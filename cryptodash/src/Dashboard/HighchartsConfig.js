@@ -1,4 +1,5 @@
-export default function (historical) {
+
+export const HighchartsConfig = (historical) => {
   return {
     title: {
       text: '6'
@@ -45,3 +46,5 @@ export default function (historical) {
     }
   }
 }
+
+export default function HighchartsConfig
