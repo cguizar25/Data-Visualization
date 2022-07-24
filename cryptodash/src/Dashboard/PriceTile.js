@@ -43,7 +43,7 @@ const PriceTileStyled = syled(SelectableTile)`
   `}
 `_
 
-function ChangePercent({data}){
+const ChangePercent = ({data}) => {
   return (
     <JustifyRight>
       <ChangePct red={data.CHANGEPCT24HOUR < 0}>
@@ -53,7 +53,7 @@ function ChangePercent({data}){
   )
 }
 
-function PriceTile({sym, data, currentFavorites, setCurrentFavorite}) {
+const  PriceTile = ({sym, data, currentFavorites, setCurrentFavorite}) => {
   return (
     <PriceTileStyled onClick={setCurrentFavorite} currentFavorites={currentFavorites}>
       <CoinHeaderGridStyled>
@@ -67,7 +67,7 @@ function PriceTile({sym, data, currentFavorites, setCurrentFavorite}) {
   );
 }
 
-function PriceTileCompact({sym, data, currentFavoritesm setCurrentFavorite}) {
+const PriceTileCompact = ({sym, data, currentFavoritesm setCurrentFavorite}) => {
   <PriceTileStyled onClick={setCurrentFavorite} compact currentFavorites={currentFavorites}>
     <JustifyLeft>
       {sym}

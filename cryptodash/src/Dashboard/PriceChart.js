@@ -6,7 +6,7 @@ import ReactHighcharts from 'react-highcharts';
 import HighchartsTheme from './HighchartsTheme';
 ReactHighcharts.Highcharts.setOptions(HighchartsTheme)
 
-export default function(){
+const PriceChart = () => {
   return (
     <AppContext.Consumer>
       {({historical}) =>
@@ -19,3 +19,5 @@ export default function(){
     </AppContext.Consumer>
   )
 }
+
+export default PriceChart;

@@ -12,7 +12,7 @@ const ChartGrid = styled.div`
   grid-template-columns: 1fr 3fr;
 `
 
-export default function(){
+const index = () =>{
   return <Page name="dashboard">
     <PriceGrid />
     <ChartGrid>
@@ -22,3 +22,5 @@ export default function(){
   </Page>
 
 }
+
+export default index;
