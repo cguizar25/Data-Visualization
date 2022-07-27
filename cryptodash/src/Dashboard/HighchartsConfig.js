@@ -47,4 +47,4 @@ export const HighchartsConfig = (historical) => {
   }
 }
 
-export default function HighchartsConfig
+export default HighchartsConfig

@@ -4,11 +4,6 @@ import { backgroundColor2, fontSize2 } from '../Shared/Styles';
 import { AppContext } from "../App/AppProvider";
 import _ from 'lodash';
 
-const SearchGrid = styled.div`
-  display: grid;
-  grid-template-columns: 200px 1fr;
-`
-
 const SearchGrid = styled.input`
   ${backgroundColor2}
   ${fontSize2}
@@ -16,11 +11,13 @@ const SearchGrid = styled.input`
   height 25px;
   color: #1163c9;
   place-self: center left
+  display: grid;
+  grid-template-columns: 200px 1fr;
 `
 
 const handleFilter = _.debounce((inputValue, coinList, setFilteredCoins) => {
   let coinSymbols = Object.keys(coinList);
-  let coinNames = coinSymbols.map(sym => coinList[sym].CoinName)_
+  let coinNames = coinSymbols.map(sym => coinList[sym].CoinName);
   let allStringsToSearch = coinSymbols.concat(coinNames);
   let fuzzyResults = fuzzy.filter(inputValue, allStringsToSearch, {})
     .filter(inputValue, allStringsToSearch, {})

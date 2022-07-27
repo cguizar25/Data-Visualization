@@ -18,7 +18,7 @@ const getCoinsToDisplay = (coinList, topSection, favorites, filterCoins) => {
   return topSection ? favorites : getLowerSectionCoins(filterCoins);
 };
 
-const CoingGrid = ({topSection}) => {
+const CoinGrid = ({topSection}) => {
   return <AppContext.Consumer>
     {({coinList, favorites}) => <CoinGridStyled>
       {getCoinsToDisplay(coinList, topSection, favorites).map(coinKey =>
