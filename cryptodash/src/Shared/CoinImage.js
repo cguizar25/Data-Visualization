@@ -7,7 +7,7 @@ export const CoinImage = styled.img`
     margin: auto;
     height: 200px;
   `}
-`_
+`;
 
 const image = ({coin, style}) => {
   return <img

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AppContext } from '../App/AppProvider';
 import PriceTile from './PriceTile'
 
-const PriceGrid = styled.div`
+const PriceGrids = styled.div`
   display: grid;
   grid-template-columns: repeat (5, 1fr);
   grid-gap: 15px;
@@ -13,12 +13,13 @@ const PriceGrid = () => {
   return (
     <AppContext.Consumer>
       {({prices}) => (
-        <PriceGrid>
+        <PriceGrids>
           {prices.map((price, index) => (
             <PriceTile index={index} price={price} />
           ))}
-        </PriceGrid>
+        </PriceGrids>
       )}
+    </AppContext.Consumer>
   )
 }
 

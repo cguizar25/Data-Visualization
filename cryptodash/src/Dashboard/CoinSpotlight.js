@@ -8,12 +8,12 @@ const SpotlightName = styled.h2`
   text-align: center;
 `
 
-export const CoinSpot = () ={
+export const CoinSpot = () => {
   return (
     <AppContext.Consumer>
     {({currentFavorite, coinList}) =>
       <Tile>
-        <SpotlightName {coinList[currentFavorite].CoinName} </SpotlightName>
+        <SpotlightName>{coinList[currentFavorite].CoinName} </SpotlightName>
         <CoinImage spotlight coin={coinList[currentFavorite]}/>
       </Tile>
     }
@@ -21,4 +21,4 @@ export const CoinSpot = () ={
   )
  }
 
-export default function CoinSpot;
+export default CoinSpot

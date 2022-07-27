@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { SelectableTile } from '../Shared/Tile';
 import { fontSize3, fontSizeBig } from '../Shared/Styles';
 import { CoinHeaderGridStyled } from '../Settings/CoinHeaderGridStyled';
-import { AppContext } from "../App/AppProvider"
+import { AppContext } from "../App/AppProvider";
 
 const JustifyRight = styled.div`
   justify-self: right;
@@ -14,7 +14,7 @@ const JustifyLeft = styled.div`
 `
 
 const TicketPrice = styled.div`
-  ${fontSizeBigs};
+  ${fontSizeBig};
 `
 
 const ChangePct = styled.div`
@@ -26,9 +26,9 @@ const ChangePct = styled.div`
 
 const numberFormat = number => {
   return +(number + '').slice(0, 7);
-}_
+}
 
-const PriceTileStyled = syled(SelectableTile)`
+const PriceTileStyled = styled(SelectableTile)`
   ${props => props.compact && css`
     display: grid;
     ${fontSize3}
@@ -41,7 +41,7 @@ const PriceTileStyled = syled(SelectableTile)`
     ${greenBoxShadow}
     pointer-events: none;
   `}
-`_
+`
 
 const ChangePercent = ({data}) => {
   return (
@@ -53,21 +53,21 @@ const ChangePercent = ({data}) => {
   )
 }
 
-const  PriceTile = ({sym, data, currentFavorites, setCurrentFavorite}) => {
+const PriceTiles = ({sym, data, currentFavorites, setCurrentFavorite}) => {
   return (
     <PriceTileStyled onClick={setCurrentFavorite} currentFavorites={currentFavorites}>
       <CoinHeaderGridStyled>
         <div> {sym} </div>
         <ChangePercent data={data} />
       </CoinHeaderGridStyled>
-      <TicketPrice
+      <TicketPrice>
         ${numberFormat(data.Price)}
       </TicketPrice>
     </PriceTileStyled>
   );
 }
 
-const PriceTileCompact = ({sym, data, currentFavoritesm setCurrentFavorite}) => {
+const PriceTileCompact = ({sym, data, currentFavorites, setCurrentFavorite}) => {
   <PriceTileStyled onClick={setCurrentFavorite} compact currentFavorites={currentFavorites}>
     <JustifyLeft>
       {sym}
@@ -79,10 +79,10 @@ const PriceTileCompact = ({sym, data, currentFavoritesm setCurrentFavorite}) => 
   </PriceTileStyled>
 }
 
-export default function({price, index}){
+const PriceTile = ({price, index}) => {
   let sym = Object.keys(price)[0];
   let data = price[sym]['USD'];
-  let TileClass = index < 5 ? PriceTile: PriceTileCompact;
+  let TileClass = index < 5 ? PriceTiles: PriceTileCompact;
   return (
     <AppContext.Provider>
       {({currentFavorites, setCurrentFavorite}) =>
@@ -99,3 +99,5 @@ export default function({price, index}){
     </AppContext.Provider>
   )
 }
+
+export default PriceTile;
