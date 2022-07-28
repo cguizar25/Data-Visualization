@@ -139,9 +139,9 @@ export class AppProvider extends React.Component {
     return {favorites, currentFavorites};
   }
 
-  setPage = page => this.setState({page})
+  setPage = page => {this.setState({page})}
 
-  setFilteredCoins = (filteredCoins) => this.setState({filteredCoins})
+  setFilteredCoins = (filteredCoins) => {this.setState({filteredCoins})}
 
   render(){
     return (
