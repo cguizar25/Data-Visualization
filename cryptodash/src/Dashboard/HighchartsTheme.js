@@ -1,6 +1,6 @@
 const lightTheme = false; // Or true
 
-export default {
+const theme = {
   colors: [
     '#61d936',
     '#552ccb',
