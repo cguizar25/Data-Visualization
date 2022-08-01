@@ -44,12 +44,14 @@ export class AppProvider extends React.Component {
     this.fetchCoins();
     this.fetchPrices();
     this.fetchHistorical();
+
   }
 
   fetchCoins = async () => {
     let coinList = (await cc.coinList()).Data;
     this.setState({coinList});
   }
+
 
   fetchPrices = async () => {
   if(this.state.firstVisit) return;
@@ -140,9 +142,11 @@ export class AppProvider extends React.Component {
     return {favorites, currentFavorites};
   }
 
+
   setPage = (page) => {this.setState({page})};
 
   setFilteredCoins = (filteredCoins) => {this.setState({filteredCoins})};
+
 
   render() {
     return (
