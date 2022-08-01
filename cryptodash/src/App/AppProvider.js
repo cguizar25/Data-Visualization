@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash'
+import moment from 'moment';
 const cc = require('cryptocompare');
 
 export const AppContext = React.createContext();
@@ -136,16 +137,18 @@ export class AppProvider extends React.Component {
     let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'));
     if (!cryptoDashData){
       return {page: 'settings', firstVisit: true}
-
+    }
     let {favorites, currentFavorites} = cryptoDashData;
     return {favorites, currentFavorites};
   }
 
-  setPage = page => this.setState({page})
 
-  setFilteredCoins = (filteredCoins) => this.setState({filteredCoins})
+  setPage = (page) => {this.setState({page})};
 
-  render(){
+  setFilteredCoins = (filteredCoins) => {this.setState({filteredCoins})};
+
+
+  render() {
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}
