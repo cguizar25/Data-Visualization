@@ -1,4 +1,3 @@
-
 export const HighchartsConfig = (historical) => {
   return {
     title: {

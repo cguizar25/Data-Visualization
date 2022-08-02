@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import {AppContext} from './AppProvider'
+import styled, { css } from 'styled-components';
+import {AppContext} from './AppProvider';
 
 const Logo = styled.div`
   font-size: 1.5em;
@@ -17,17 +17,24 @@ const ControlButtonElem = styled.div`
   ${props => props.active && css`
       text-shadow: 0px 0px 60px #03ff03;
   `}
+  ${props => props.hidden && css`
+    display: none;
+  `}
 `
 
 const toPowerCase = (lower) => {
   return lower.charAt(0).toUpperCase() + lower.substr(1);
 }
 
-function ControlButton({name, active}){
+const ControlButton = ({name}) => {
   return (
     <AppContext.Consumer>
-      {({page, setPage}) => (
-        <ControlButtonElem active={page === name} onClick={() => setPage(name)}>
+      {({firstVisit, page, setPage}) => (
+        <ControlButtonElem
+          active={page === name}
+          onClick={() => setPage(name)}
+          hidden={firstVisit && page === 'dashboard'}
+        >
           {toPowerCase(name)}
         </ControlButtonElem>
       )}
