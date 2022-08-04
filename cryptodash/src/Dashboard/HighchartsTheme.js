@@ -1,4 +1,4 @@
-const lightTheme = false; // Or true
+const lightTheme = false;
 
 export default {
   colors: [
