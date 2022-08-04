@@ -29,4 +29,4 @@ const CoinHeader = ({name, symbol, topSection}) => {
   </CoinHeaderGridStyled>
 }
 
-export default CoinHeader
+export default CoinHeader;
