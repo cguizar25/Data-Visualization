@@ -1,4 +1,4 @@
-import { AppContext } from '../App/AppProvider';
+import { AppContext } from "../App/AppProvider";
 
 const Page = ({name, children}) => {
   return <AppContext.Consumer>
@@ -6,7 +6,7 @@ const Page = ({name, children}) => {
       if (page !== name) {
         return null;
       }
-      return <div> { children } </div>
+      return <div> {children} </div>;
     }}
   </AppContext.Consumer>
 }

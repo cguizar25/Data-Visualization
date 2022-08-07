@@ -1,28 +1,27 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 import {AppContext} from './AppProvider';
 
 const Logo = styled.div`
-  font-size: 1.5em;
+  font-size 1.5em;
 `
 
 const Bar = styled.div`
   display: grid;
   margin-bottom: 40px;
-  grid-template-column: 180px auto 100px 100px;
+  grid-template-columns: 180px auto 100px 100px;
 `
 
 const ControlButtonElem = styled.div`
   cursor: pointer;
-  ${props => props.active && css`
-      text-shadow: 0px 0px 60px #03ff03;
+  ${props =>props.active && css`
+    text-shadow: 0px 0px 60px #03ff03
   `}
   ${props => props.hidden && css`
-    display: none;
-  `}
+    display: none
+    `}
 `
 
-const toPowerCase = (lower) => {
+const toProperCase = (lower) => {
   return lower.charAt(0).toUpperCase() + lower.substr(1);
 }
 
@@ -33,9 +32,9 @@ const ControlButton = ({name}) => {
         <ControlButtonElem
           active={page === name}
           onClick={() => setPage(name)}
-          hidden={firstVisit && page === 'dashboard'}
+          hidden={firstVisit && name === 'dashboard'}
         >
-          {toPowerCase(name)}
+          {toProperCase(name)}
         </ControlButtonElem>
       )}
     </AppContext.Consumer>
@@ -44,11 +43,11 @@ const ControlButton = ({name}) => {
 
 const AppBar = () => {
   return <Bar>
-      <Logo>CryptoDash</Logo>
-      <div/>
-      <ControlButton name='Dashboard'/>
-      <ControlButton name='Settings'/>
-    </Bar>
+    <Logo>CryptoDash</Logo>
+    <div />
+    <ControlButton active  name="dashboard" />
+    <ControlButton name="settings" />
+  </Bar>
 }
 
-export default AppBar
+export default AppBar;
