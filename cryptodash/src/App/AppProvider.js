@@ -40,6 +40,7 @@ export class AppProvider extends React.Component {
     this.setState({coinList});
   }
 
+
   fetchPrices = async () => {
     if(this.state.firstVisit) return;
     let prices = await this.prices();
@@ -152,6 +153,7 @@ export class AppProvider extends React.Component {
   changeChartSelect = (value) => {
     this.setState({timeInterval: value, historical: null}, this.fetchHistorical);
   };
+
 
   render() {
     return (
