@@ -3,29 +3,25 @@ import styled from 'styled-components';
 import { backgroundColor2, fontSize2 } from '../Shared/Styles';
 import { AppContext } from "../App/AppProvider";
 import _ from 'lodash';
-import fuzzy from 'fuzzy';
 
-const SearchGrid = styled.div`
-  display: grid;
-  grid-template-columns: 200px 1fr;
-`;
-
-const SearchInput = styled.input`
+const SearchGrid = styled.input`
   ${backgroundColor2}
   ${fontSize2}
   border: 1p solid;
   height 25px;
   color: #1163c9;
-  place-self: center left;
-`;
+  place-self: center left
+  display: grid;
+  grid-template-columns: 200px 1fr;
+`
 
 const handleFilter = _.debounce((inputValue, coinList, setFilteredCoins) => {
   let coinSymbols = Object.keys(coinList);
   let coinNames = coinSymbols.map(sym => coinList[sym].CoinName);
   let allStringsToSearch = coinSymbols.concat(coinNames);
-  let fuzzyResults = fuzzy
+  let fuzzyResults = fuzzy.filter(inputValue, allStringsToSearch, {})
     .filter(inputValue, allStringsToSearch, {})
-    .map(result => result.string);
+    .map(result = result.string);
 
   let filteredCoins = _.pickBy(coinList, (result, symKey) => {
     let coinName = result.CoinName;
@@ -34,7 +30,7 @@ const handleFilter = _.debounce((inputValue, coinList, setFilteredCoins) => {
   setFilteredCoins(filteredCoins);
 }, 500)
 
-const filterCoins = (e, setFilteredCoins, coinList) => {
+function filterCoins(e, setFilteredCoins, coinList){
   let inputValue = e.target.value;
   if (!inputValue) {
     setFilteredCoins(null);

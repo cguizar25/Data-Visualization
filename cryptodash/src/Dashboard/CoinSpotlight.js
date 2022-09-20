@@ -8,18 +8,17 @@ const SpotlightName = styled.h2`
   text-align: center;
 `
 
-export const CoinSpotlight = () => {
+export const CoinSpot = () => {
   return (
     <AppContext.Consumer>
-      {({currentFavorite, coinList}) =>
-        <Tile>
-          <SpotlightName>{coinList[currentFavorite].CoinName}</SpotlightName>
-          <CoinImage spotlight coin={coinList[currentFavorite]} />
-        </Tile>
-      }
+    {({currentFavorite, coinList}) =>
+      <Tile>
+        <SpotlightName>{coinList[currentFavorite].CoinName} </SpotlightName>
+        <CoinImage spotlight coin={coinList[currentFavorite]}/>
+      </Tile>
+    }
     </AppContext.Consumer>
-
   )
  }
 
-export default CoinSpotlight;
+export default CoinSpot

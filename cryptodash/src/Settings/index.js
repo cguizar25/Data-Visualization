@@ -1,17 +1,14 @@
-import Welcome from './WelcomeMessage';
+import WelcomeMessage from './WelcomeMessage';
 import ConfirmButton from './ConfirmButton';
 import Page from '../Shared/Page';
 import CoinGrid from './CoinGrid';
 import Search from './Search';
 
-const Settings = () => {
+export default function(){
   return <Page name="settings">
-    <Welcome />
-    <CoinGrid topSection/>
+    <WelcomeMessage />
+    <CoinGrid topSection />
     <ConfirmButton />
-    <Search />
     <CoinGrid />
   </Page>
 }
-
-export default Settings;
