@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import Page from '../Shared/Page';
 import PriceGrid from './PriceGrid';
@@ -12,15 +13,13 @@ const ChartGrid = styled.div`
 `
 
 const index = () =>{
-  return (
-    <Page name="dashboard">
-      <PriceGrid/>
-      <ChartGrid>
-        <CoinSpotlight/>
-        <PriceChart />
-      </ChartGrid>
-    </Page>
-  )
+  return <Page name="dashboard">
+    <PriceGrid />
+    <ChartGrid>
+      <CoinSpotlight />
+      <PriceChart />
+    </ChartGrid>
+  </Page>
 
 }
 

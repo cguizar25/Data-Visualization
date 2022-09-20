@@ -1,6 +1,6 @@
-import { lightTheme } from '../Shared/Styles';
+const lightTheme = false;
 
-const HighchartsTheme = {
+export default {
   colors: [
     '#61d936',
     '#552ccb',
@@ -239,6 +239,7 @@ const HighchartsTheme = {
     trackBorderColor: '#666'
   },
 
+  // special colors for some of the
   legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
   background2: 'rgb(35, 35, 70)',
   dataLabelsColor: '#444',
@@ -246,4 +247,4 @@ const HighchartsTheme = {
   maskColor: 'rgba(255,255,255,0.3)'
 };
 
-export default HighchartsTheme;
+export default theme;

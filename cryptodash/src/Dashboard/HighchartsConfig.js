@@ -1,7 +1,7 @@
 export const HighchartsConfig = (historical) => {
   return {
     title: {
-      text: ''
+      text: '6'
     },
 
     yAxis: {
@@ -11,13 +11,14 @@ export const HighchartsConfig = (historical) => {
     },
 
     xAxis: {type: 'datetime'},
+
     legend: {
       layout: 'vertical',
       align: 'right',
       verticalAlign: 'middle'
     },
 
-    plotOptions: {
+    plotOption: {
       series: {
         label: {
           connectorAllowed: false
@@ -45,4 +46,4 @@ export const HighchartsConfig = (historical) => {
   }
 }
 
-export default HighchartsConfig;
+export default HighchartsConfig
